@@ -11,6 +11,7 @@ if(!isset($_SESSION['user_id']))
 $action = $_POST['action'];
 if($action == 'create')
 {
+    //add minlenght and beschrijving
     //Validatie
     $title = $_POST['title'];
     if(empty($title))

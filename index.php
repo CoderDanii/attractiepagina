@@ -24,8 +24,20 @@ require_once 'admin/backend/config.php';
         <aside>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia modi dolore magnam! Iste libero voluptatum autem, sapiente ullam earum nostrum sed magnam vel laboriosam quibusdam, officia, esse vitae dignissimos nulla?
         </aside>
+        
         <main>
             <!-- hier komen de attractiekaartjes -->
+            <div class="small">
+                <img src="img/attracties/adger-kang-oiyzr-SgjBY-unsplash.jpg" alt="img">
+                <p>adventureland</p>
+                <h3>speedy xl</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, culpa consequatur? Maxime animi ab tenetur facilis mollitia perspiciatis! Quasi qui animi fugit impedit corrupti similique sapiente omnis laboriosam quos itaque.</p>
+                <p>129cm minimale lengte</p>               
+            </div>
+            <div class="large">
+                
+
+            </div>
         </main>
     </div>
 

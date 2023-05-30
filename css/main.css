@@ -178,6 +178,30 @@ th{
 }
 
 
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+.small{
+  border: 1px solid transparent;
+  border-radius: 25px;
+  background-color: lightgray;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+}
+.small img{
+  border-radius: 25px;
+  height: 40%;
+}
+.small p{
+
+  width: 75%;
+}
+.large{
+  display: grid;
+  grid-row: span 2;
+}
+
 
 
 

@@ -55,6 +55,14 @@ if(!isset($_SESSION['user_id']))
                 <input type="checkbox" name="fast_pass" id="fast_pass">
                 <label for="fast_pass">Voor deze attractie is een FAST PASS nodig.</label>
             </div>
+            <div class="form-group">
+                <label for="description">beschrijving</label>
+                <input type="text" name="description" id="description">
+            </div>            
+            <div class="form-group">
+                <label for="min_length">minimale lengte:</label>
+                <input type="text" name="min_length" id="min_length">
+            </div>
 
             <input type="submit" value="Attractie aanmaken">
 
