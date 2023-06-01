@@ -185,6 +185,7 @@ th {
   color: #fff;
 }
 
+
 /* main */
 main{
   display: grid;
@@ -195,6 +196,7 @@ main{
 
 /* small card */
 .small{
+  display: grid;
   border: 1px solid transparent;
   border-radius: 25px;
   background-color: lightgray;

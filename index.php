@@ -40,16 +40,33 @@ require_once 'admin/backend/config.php';
 
                 foreach ($attracties as $attractie):?>
 
-                    <div class="<?php if ($attractie['fast_pass'] == 0)echo "small"; if ($attractie['fast_pass'] == 1)echo "large"; ?>">
+                    <div class="<?php if ($attractie['fast_pass'] == 0)echo "small";?>">
                     <img src="img/attracties/<?php echo $attractie['img_file'];?>"/>
                     <div class="info">
                         <div class="attractietheme"><p> <?php echo strtoupper($attractie['themeland'])?></p></div>
                         <div class="attractietitle"><p> <?php echo $attractie['title'];?></p></div>
                         <div class="attractieDes"><p> <?php echo $attractie['description'];?></p></div>
                         <div class="length"><p> <?php echo $attractie['min_length']; if ($attractie['min_length'] != null) echo "CM minimale lengte"; ?></p></div>
-                    </div>            
-                <?php endforeach; ?>     
-                
+                    </div>        
+                    
+                    <div class="<?php if ($attractie['fast_pass'] == 1)echo "large";?>">
+                    <img src="img/attracties/<?php echo $attractie['img_file'];?>"/>
+                    <div class="info">
+                        <div class="attractietheme"><p> <?php echo strtoupper($attractie['themeland'])?></p></div>
+                        <div class="attractietitle"><p> <?php echo $attractie['title'];?></p></div>
+                        <div class="attractieDes"><p> <?php echo $attractie['description'];?></p></div>
+                        <div class="length"><p> <?php echo $attractie['min_length']; if ($attractie['min_length'] != null) echo "CM minimale lengte"; ?></p></div>
+                        <div class="asdfasdf">
+                        <p>deze attractie is alleen te</p>
+                        <p>bezoeken met fastpass</p>
+                        <p>boek nu en sla de wachtrij over</p>
+                        <div class="fastpass">
+                            <img src="img/Ticket.png">
+                            <p>FAST PASS</p>
+                        </div>
+                        </div>
+                    </div>  
+                <?php endforeach; ?>                    
             </div>
             <!-- hier komen de attractiekaartjes -->
             <!-- <div class="small">
@@ -85,14 +102,9 @@ require_once 'admin/backend/config.php';
                         <div class="fastpass">
                             <img src="img/Ticket.png">
                             <p>FAST PASS</p>
-
                         </div>
-
                     </div>
-
                 </div>
-
-
             </div> -->
         </main>
     </div>
