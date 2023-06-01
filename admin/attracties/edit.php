@@ -39,7 +39,7 @@ if(!isset($_SESSION['user_id']))
         $ride = $statement->fetch(PDO::FETCH_ASSOC);
         ?>
 
-        <form action="../backend/ridesController.php" method="POST">
+        <form action="../backend/ridesController.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="hidden" name="old_img" value="<?php echo $ride['img_file']; ?>">
@@ -66,6 +66,14 @@ if(!isset($_SESSION['user_id']))
                 <label for="fast_pass">FAST PASS:</label>
                 <input type="checkbox" name="fast_pass" id="fast_pass" <?php if($ride['fast_pass']) echo 'checked'; ?>>
                 <label for="fast_pass">Voor deze attractie is een FAST PASS nodig.</label>
+            </div>
+            <div class="form-group">
+                <label for="description">beschrijving</label>
+                <input type="text" name="description" id="description" value="<?php echo $ride['description']; ?>">
+            </div>            
+            <div class="form-group">
+                <label for="min_length">minimale lengte:</label>
+                <input type="text" name="min_length" id="min_length" value="<?php echo $ride['min_length']; ?>">
             </div>
 
             <input type="submit" value="Attracties aanpassen">

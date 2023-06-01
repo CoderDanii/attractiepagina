@@ -38,6 +38,7 @@ if(!isset($_SESSION['user_id']))
         $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
         ?>
 
+
         <table>
             <tr>
                 <th>Titel</th>

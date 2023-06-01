@@ -170,60 +170,73 @@ label{
 
 /* TABELLEN */
 table{
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-th{
-    text-align: left;
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
+th {
+  background-color: #4a545ccc;
+  color: #fff;
+}
 
+/* main */
 main{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 50px;
 
 }
+
+/* small card */
 .small{
   border: 1px solid transparent;
   border-radius: 25px;
   background-color: lightgray;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.small img{
+/* .small img{
   border-radius: 25px 25px 0 0;
   margin: 0;
   width: 100%;
-}
-.small p{
+  height: 150px;
+  object-fit: cover;
+} */
+/* .small p{
   width: 75%;
   margin: 10px;
-}
-.length p{
-  color: gray;
-}
-.small h3{
+} */
+
+/* .small h3{
   margin: 10px;
   font-size: xx-large;
-}
+} */
 
-.info{
+/* .info{
   display: grid;
   grid-template-columns: 1fr 1fr; 
-}
+} */
 
-.large{
+/* large card */
+ .large{
   display: grid;
   border: 1px solid transparent;
   border-radius: 25px;
   background-color: lightgray;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   grid-column: span 2;
-}
-.large img{
+} 
+/* .large img{
   border-radius: 25px 25px 0 0;
   margin: 0;
   width: 100%;
+  height: 150px;
+  object-fit: cover;
 }
 .large p{
   width: 75%;
@@ -232,20 +245,55 @@ main{
 .large h3{
   margin: 10px;
   font-size: xx-large;
-}
+} */
+/* .asdfasdf{
+  background-color: white;
+  border-radius: 0 0 25px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
 
+/* fastpass */
 .fastpass{
+  display: flex;
+  align-items: center;
   background: green;
-  border: 3px;
   border-radius: 10px;
-
 }
 .fastpass img{
   height: 20px;
   width: 20px;
 }
 
+/* lenght */
+/* .length p{
+  color: gray;
+} */
 
+.attractietheme{
+  width: 75%;
+  margin: 10px;
+}
+img{
+  border-radius: 25px 25px 0 0;
+  margin: 0;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.attractietitle{
+  margin: 10px;
+  font-size: xx-large;
+}
+.length{
+  color: gray;
+}
+
+.attractieDes{
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+}
 
 
 /* ==========================================================================

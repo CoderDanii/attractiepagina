@@ -65,8 +65,8 @@ if(!isset($_SESSION['user_id']))
             </div>
 
             <input type="submit" value="Attractie aanmaken">
-
-
+        </form>
+            
     </div>
 
 </body>

@@ -28,10 +28,31 @@ require_once 'admin/backend/config.php';
             autem, sapiente ullam earum nostrum sed magnam vel laboriosam quibusdam, officia, esse vitae dignissimos
             nulla?
         </aside>
-
         <main>
+
+            <div class="grid-template"> 
+                <?php 
+                require_once 'admin/backend/conn.php';
+                $query = "SELECT * FROM rides";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                $attracties = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($attracties as $attractie):?>
+
+                    <div class="<?php if ($attractie['fast_pass'] == 0)echo "small"; if ($attractie['fast_pass'] == 1)echo "large"; ?>">
+                    <img src="img/attracties/<?php echo $attractie['img_file'];?>"/>
+                    <div class="info">
+                        <div class="attractietheme"><p> <?php echo strtoupper($attractie['themeland'])?></p></div>
+                        <div class="attractietitle"><p> <?php echo $attractie['title'];?></p></div>
+                        <div class="attractieDes"><p> <?php echo $attractie['description'];?></p></div>
+                        <div class="length"><p> <?php echo $attractie['min_length']; if ($attractie['min_length'] != null) echo "CM minimale lengte"; ?></p></div>
+                    </div>            
+                <?php endforeach; ?>     
+                
+            </div>
             <!-- hier komen de attractiekaartjes -->
-            <div class="small">
+            <!-- <div class="small">
                 <img src="img/attracties/adger-kang-oiyzr-SgjBY-unsplash.jpg" alt="img">
                 <p>adventureland</p>
                 <h3>speedy xl</h3>
@@ -42,6 +63,7 @@ require_once 'admin/backend/config.php';
                     <p>129cm minimale lengte</p>
                 </div>
             </div>
+
             <div class="large">
                 <img src="img/attracties/adger-kang-oiyzr-SgjBY-unsplash.jpg" alt="img">
                 <div class="info">
@@ -55,14 +77,15 @@ require_once 'admin/backend/config.php';
                             <p>129cm minimale lengte</p>
                         </div>
 
-
                     </div>
                     <div class="asdfasdf">
-                        <p>deze attractie is alleen te bezoeken met fastpass</p>
+                        <p>deze attractie is alleen te</p>
+                        <p>bezoeken met fastpass</p>
                         <p>boek nu en sla de wachtrij over</p>
                         <div class="fastpass">
-                            <img src="img/Ticket.png" alt="">
+                            <img src="img/Ticket.png">
                             <p>FAST PASS</p>
+
                         </div>
 
                     </div>
@@ -70,7 +93,7 @@ require_once 'admin/backend/config.php';
                 </div>
 
 
-            </div>
+            </div> -->
         </main>
     </div>
 
