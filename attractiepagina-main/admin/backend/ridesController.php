@@ -11,7 +11,6 @@ if(!isset($_SESSION['user_id']))
 $action = $_POST['action'];
 if($action == 'create')
 {
-    //add minlenght and beschrijving
     //Validatie
     $title = $_POST['title'];
     if(empty($title))
@@ -24,12 +23,14 @@ if($action == 'create')
     {
         $errors[] = "Vul een themagebied in!";
     }
+
+    $min_length = $_POST['min_length'];
+    
     $description = $_POST['description'];
-    if(empty($description))
+    if (empty($description)) 
     {
         $errors[] = "Vul een beschrijving in!";
     }
-    $min_length = $_POST['min_length'];
 
     if(isset($_POST['fast_pass']))
     {
@@ -59,15 +60,15 @@ if($action == 'create')
 
     //Query
     require_once 'conn.php';
-    $query = "INSERT INTO rides (title, themeland, fast_pass, img_file, description, min_lenght) VALUES(:title, :themeland, :fast_pass, :img_file, :description, :min_length)";
+    $query = "INSERT INTO rides (title, themeland, fast_pass, img_file, min_length, description) VALUES(:title, :themeland, :fast_pass, :img_file, :min_length, :description)";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":title" => $title,
         ":themeland" => $themeland,
         ":fast_pass" => $fast_pass,
         ":img_file" => $target_file,
-        "description" => $description,
         ":min_length" => $min_length,
+        ":description" => $description,
     ]);
 
     header("Location: ../attracties/index.php");
@@ -78,16 +79,9 @@ if($action == "update")
 {
     $id = $_POST['id'];
     $title = $_POST['title'];
-    if(empty($title))
-    {
-        $errors[] = "Vul een titel in!";
-    }
-
     $themeland = $_POST['themeland'];
-    if(empty($themeland))
-    {
-        $errors[] = "Vul een themagebied in!";
-    }
+    $min_length = $_POST['min_length'];
+    $description = $_POST['description'];
     if(isset($_POST['fast_pass']))
     {
         $fast_pass = true;
@@ -96,12 +90,6 @@ if($action == "update")
     {
         $fast_pass = false;
     }
-    $description = $_POST['description'];
-    if(empty($description))
-    {
-        $errors[] = "Vul een beschrijving in!";
-    }
-    $min_length = $_POST['min_length'];
 
     if(empty($_FILES['img_file']['name']))
     {
@@ -129,15 +117,15 @@ if($action == "update")
 
     //Query
     require_once 'conn.php';
-    $query = "UPDATE rides SET title = :title, themeland = :themeland, fast_pass = :fast_pass, img_file = :img_file, description = :description, min_length = :min_length WHERE id = :id";
+    $query = "UPDATE rides SET title = :title, themeland = :themeland, min_length = :min_length, description = :description, fast_pass = :fast_pass, img_file = :img_file WHERE id = :id";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":title" => $title,
         ":themeland" => $themeland,
         ":fast_pass" => $fast_pass,
         ":img_file" => $target_file,
-        "description" => $description,
         ":min_length" => $min_length,
+        ":description" => $description,
         ":id" => $id
     ]);
 
