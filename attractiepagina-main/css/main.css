@@ -173,13 +173,23 @@ label{
 }
 
 /* TABELLEN */
-table{
-    width: 100%;
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-th{
-    text-align: left;
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
+
+th {
+  background-color: #4a545ccc;
+  color: #fff;
+}
+
+
 .grid{
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -306,6 +316,13 @@ th{
   text-align: center;
   color: lightgray;
 
+}
+
+.dropdown select{
+  width: 250px;
+}
+.dropdown input{
+  width: 250px;
 }
 /* ==========================================================================
    Helper classes
