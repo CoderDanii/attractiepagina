@@ -24,34 +24,7 @@ require_once 'admin/backend/config.php';
     <?php require_once 'header.php'; ?>
     <div class="container content">
         <aside>
-            <?php
-            if (empty($_GET['status'])) {
-                require_once 'admin/backend/conn.php';
-                $query = "SELECT * FROM rides";
-                $statement = $conn->prepare($query);
-                $statement->execute();
 
-            } elseif (!empty($_GET['status']) && ($_GET['status'] == "min_length")) {
-                require_once 'admin/backend/conn.php';
-                $query = "SELECT * FROM rides ORDER BY min_length DESC";
-                $statement = $conn->prepare($query);
-                $statement->execute();
-            } elseif (!empty($_GET['status']) && ($_GET['status'] == "themeland")) {
-                require_once 'admin/backend/conn.php';
-                $query = "SELECT * FROM rides ORDER BY themeland ASC";
-                $statement = $conn->prepare($query);
-                $statement->execute();
-            } else {
-                require_once 'admin/backend/conn.php';
-                $query = "SELECT * FROM rides ORDER BY fast_pass DESC";
-                $statement = $conn->prepare($query);
-                $statement->execute();
-
-            }
-            $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-
-            ?>
             <div class="dropdown">
             <form action="" method="GET">
                 <select name="status">
