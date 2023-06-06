@@ -25,26 +25,62 @@ require_once 'admin/backend/config.php';
     <div class="container content">
         <aside>
 
+            <?php
+            require_once 'admin/backend/conn.php';
+            if (!empty($_GET['fast_pass'])) {
+
+                $query = "SELECT * FROM rides WHERE fast_pass = 1";
+                $statement = $conn->prepare($query);
+                $statement->execute([
+                    ":fast_pass" => $_GET['fast_pass']
+                ]);
+
+            }
+
+            if (!empty($_GET['themeland'])) {
+
+                $query = "SELECT * FROM rides WHERE themeland = :themeland";
+                $statement = $conn->prepare($query);
+                $statement->execute([
+                    ":themeland" => $_GET['themeland']
+                ]);
+            }
+
+
+            if (!empty($_GET['min_length'])) {
+
+                require_once 'admin/backend/conn.php';
+                $query = "SELECT * FROM rides WHERE min_length = :min_length";
+                $statement = $conn->prepare($query);
+                $statement->execute([
+                    ":min_length" => $_GET['min_length']
+                ]);
+            }
+
+            // $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
+            ?>
             <div class="dropdown">
-            <form action="" method="GET">
-                <select name="status">
-                    <option value="">Fast_pass nodig</option>
-                    <option value="fast_pass">ja</option>
-                    <option value="fast_pass">nee</option>
-                </select>
-                <select name="status">
-                    <option value="">themagebied</option>
-                    <option value="themeland">familyland</option>
-                    <option value="themeland">adventureland</option>
-                    <option value="themeland">waterland</option>
-                </select>                
-                <select name="status">
-                    <option value="">min length</option>
-                    <option value="min_length">langer dan 1 meter</option>
-                    <option value="min_length">korter dan 1 meter</option>
-                </select>
-                <input type="submit" value="filter">
-            </form>
+                <form action="" method="GET">
+                    <select name="fast_pass">
+                        <option value="">Fast_pass nodig</option>
+                        <option value="yes">ja</option>
+                        <option value="no">nee</option>
+                    </select>
+                    <input type="submit" value="filter">
+                    <select name="themeland">
+                        <option value="">themagebied</option>
+                        <option value="themeland">familyland</option>
+                        <option value="themeland">adventureland</option>
+                        <option value="themeland">waterland</option>
+                    </select>
+                    <input type="submit" value="filter">
+                    <select name="min_length">
+                        <option value="">min length</option>
+                        <option value="min_length">langer dan 1 meter</option>
+                        <option value="min_length">korter dan 1 meter</option>
+                    </select>
+                    <input type="submit" value="filter">
+                </form>
             </div>
 
         </aside>
