@@ -26,58 +26,75 @@ require_once 'admin/backend/config.php';
         <aside>
 
             <?php
+
             require_once 'admin/backend/conn.php';
-            if (!empty($_GET['fast_pass'])) {
 
-                $query = "SELECT * FROM rides WHERE fast_pass = 1";
+            if (empty($_GET['theme']) && !isset($_GET['fastpass']) && empty($_GET['length']) && empty($_GET['name'])) {
+
+                $query = "SELECT * FROM rides";
+
                 $statement = $conn->prepare($query);
-                $statement->execute([
-                    ":fast_pass" => $_GET['fast_pass']
-                ]);
+
+                $statement->execute();
+
+            } else if (isset($_GET['theme'])) {
+
+                $query = "SELECT * FROM rides WHERE lower(themeland = :theme)";
+
+                $statement = $conn->prepare($query);
+
+                $statement->execute([":theme" => $_GET['theme']]);
+
+            } else if (isset($_GET['fastpass'])) {
+
+                $query = "SELECT * FROM rides WHERE lower(fast_pass = :fastpass)";
+
+                $statement = $conn->prepare($query);
+
+                $statement->execute([":fastpass" => $_GET['fastpass']]);
+
+            } else if (isset($_GET['length'])) {
+
+                $query = "SELECT * FROM rides WHERE lower(min_length <= :length) ORDER BY min_length DESC";
+
+                $statement = $conn->prepare($query);
+
+                $statement->execute([":length" => $_GET['length']]);
+
+            } else if (isset($_GET['name'])) {
+
+                $testName = $_GET['name'];
+
+                $query = "SELECT * FROM rides WHERE lower(title) LIKE '$testName%'";
+
+                $statement = $conn->prepare($query);
+
+                $statement->execute([":name" => $_GET['name']]);
 
             }
 
-            if (!empty($_GET['themeland'])) {
+            $attracties = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-                $query = "SELECT * FROM rides WHERE themeland = :themeland";
-                $statement = $conn->prepare($query);
-                $statement->execute([
-                    ":themeland" => $_GET['themeland']
-                ]);
-            }
-
-
-            if (!empty($_GET['min_length'])) {
-
-                require_once 'admin/backend/conn.php';
-                $query = "SELECT * FROM rides WHERE min_length = :min_length";
-                $statement = $conn->prepare($query);
-                $statement->execute([
-                    ":min_length" => $_GET['min_length']
-                ]);
-            }
-
-            // $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <div class="dropdown">
                 <form action="" method="GET">
-                    <select name="fast_pass">
+                    <select name="fastpass">
                         <option value="">Fast_pass nodig</option>
-                        <option value="yes">ja</option>
-                        <option value="no">nee</option>
+                        <option value="fastpass">ja</option>
+                        <option value="fastpass">nee</option>
                     </select>
                     <input type="submit" value="filter">
-                    <select name="themeland">
+                    <select name="theme">
                         <option value="">themagebied</option>
-                        <option value="themeland">familyland</option>
-                        <option value="themeland">adventureland</option>
-                        <option value="themeland">waterland</option>
+                        <option value="theme">familyland</option>
+                        <option value="theme">adventureland</option>
+                        <option value="theme">waterland</option>
                     </select>
                     <input type="submit" value="filter">
-                    <select name="min_length">
+                    <select name="length">
                         <option value="">min length</option>
-                        <option value="min_length">langer dan 1 meter</option>
-                        <option value="min_length">korter dan 1 meter</option>
+                        <option value="length">langer dan 1 meter</option>
+                        <option value="length">korter dan 1 meter</option>
                     </select>
                     <input type="submit" value="filter">
                 </form>
