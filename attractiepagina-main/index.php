@@ -73,28 +73,32 @@ require_once 'admin/backend/config.php';
 
             }
 
-            $attracties = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
 
             ?>
             <div class="dropdown">
                 <form action="" method="GET">
                     <select name="fastpass">
                         <option value="">Fast_pass nodig</option>
-                        <option value="fastpass">ja</option>
-                        <option value="fastpass">nee</option>
+                        <option value="1">ja</option>
+                        <option value="0">nee</option>
                     </select>
                     <input type="submit" value="filter">
-                    <select name="theme">
+                </form>
+                <form action="" method="GET">
+                <select name="theme">
                         <option value="">themagebied</option>
-                        <option value="theme">familyland</option>
-                        <option value="theme">adventureland</option>
-                        <option value="theme">waterland</option>
+                        <option value="familyland">familyland</option>
+                        <option value="adventureland">adventureland</option>
+                        <option value="waterland">waterland</option>
                     </select>
                     <input type="submit" value="filter">
-                    <select name="length">
+                </form> 
+                <form action="" method="GET">
+                <select name="length">
                         <option value="">min length</option>
-                        <option value="length">langer dan 1 meter</option>
-                        <option value="length">korter dan 1 meter</option>
+                        <option value="200">langer dan 1 meter</option>
+                        <option value="100">korter dan 1 meter</option>
                     </select>
                     <input type="submit" value="filter">
                 </form>
@@ -102,14 +106,7 @@ require_once 'admin/backend/config.php';
 
         </aside>
         <main>
-            <?php
 
-            require_once 'admin/backend/conn.php';
-            $query = "SELECT * FROM rides";
-            $statement = $conn->prepare($query);
-            $statement->execute();
-            $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
-            ?>
             <div class="grid">
                 <?php foreach ($rides as $ride): ?>
 
