@@ -128,7 +128,7 @@ require_once 'admin/backend/config.php';
                                 <?php if (isset($ride['min_length'])): ?>
 
                                     <h3>
-                                        <?php echo $ride['min_length']; ?>cm minimale lengte
+                                        <?php echo $ride['min_length']; ?> cm minimale lengte
                                     </h3>
 
                                 <?php endif; ?>
@@ -151,7 +151,7 @@ require_once 'admin/backend/config.php';
                                     </p>
                                     <?php if (isset($ride['min_length'])): ?>
                                         <h3>
-                                            <?php echo $ride['min_length']; ?>cm minimale lengte
+                                            <?php echo $ride['min_length']; ?> cm minimale lengte
                                         </h3>
                                     <?php endif; ?>
                                 </div>

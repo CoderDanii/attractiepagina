@@ -225,10 +225,10 @@ th {
 }
 .kaart h3{
   font-size: 17px;
-  color: lightgray;
+  color: black;
   text-transform: lowercase;
   font-weight: normal;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .kaart img{
   width: 100%;
@@ -260,7 +260,7 @@ th {
   color: lightgray;
   text-transform: lowercase;
   font-weight: normal;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .kaart2 button{
   background: limegreen;
