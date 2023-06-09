@@ -32,11 +32,11 @@ require_once 'backend/config.php';
         <form action="backend/loginController.php" method="POST">
             <div class="form-group">
                 <label for="username">Gebruikersnaam:</label>
-                <input type="text" name="username" id="username" placeholder="user1 t/m 3">
+                <input type="text" name="username" id="username" placeholder="">
             </div>
             <div class="form-group">
                 <label for="password">Wachtwoord:</label>
-                <input type="password" name="password" id="password" placeholder="pass1 t/m 3">
+                <input type="password" name="password" id="password" placeholder="">
             </div>
             <input type="submit" value="Login">
         </form>
